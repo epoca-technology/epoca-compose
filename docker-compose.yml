@@ -1,5 +1,6 @@
 version: "3.9"
 services:
+  # Postgres Service
   postgres:
     container_name: postgres
     image: postgres:14-alpine
@@ -12,6 +13,12 @@ services:
       - pgdata:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+    logging:
+      driver: local
+      options:
+        max-size: 10m
+        max-file: "10"
+  # PG Admin Service
   pgadmin:
     container_name: pgadmin
     image: dpage/pgadmin4:4.18
@@ -26,6 +33,12 @@ services:
       - pgadmin-data:/var/lib/pgadmin
     ports:
       - "8080:80"
+    logging:
+      driver: local
+      options:
+        max-size: 10m
+        max-file: "10"
+  # API Service
   api:
     extends:
       file: ../api-${NODE_ENV}/docker-compose.yml
@@ -47,6 +60,12 @@ services:
       PORT: 5075
     ports:
       - "5075:5075"
+    logging:
+      driver: local
+      options:
+        max-size: 10m
+        max-file: "10"
+  # Forecast API Service
   forecast-api:
     extends:
       file: ../forecast-api-${NODE_ENV}/docker-compose.yml
@@ -65,6 +84,50 @@ services:
       PORT: 5000
     ports:
       - "5000:5000"
+    logging:
+      driver: local
+      options:
+        max-size: 10m
+        max-file: "10"
+  # Dozzle Service      
+  dozzle:
+    container_name: dozzle
+    image: amir20/dozzle:latest
+    environment:
+      DOZZLE_TAILSIZE: 300
+      DOZZLE_USERNAME: ${DOZZLE_USERNAME}
+      DOZZLE_PASSWORD: ${DOZZLE_PASSWORD}
+      DOZZLE_KEY: ${DOZZLE_KEY}
+      DOZZLE_NO_ANALYTICS: "true"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 8085:8080
+    logging:
+      driver: local
+      options:
+        max-size: 10m
+        max-file: "10"
+  # GUI Service
+  gui:
+    extends:
+      file: ../gui-${NODE_ENV}/docker-compose.yml
+      service: gui
+    build: 
+      args:
+        NODE_ENV: ${NODE_ENV}
+    depends_on:
+      - postgres
+      - api
+      - forecast-api
+    ports:
+      - "8090:80"
+    logging:
+      driver: local
+      options:
+        max-size: 10m
+        max-file: "10"
+
 volumes:
     pgdata:
     pgadmin-data:
