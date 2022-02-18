@@ -2,8 +2,11 @@
 
 Start Containers:
 
-`docker-compose up --build -d`
+`docker-compose up -d`
 
+Build & Start Containers:
+
+`docker-compose up --build -d`
 
 Start Containers in Test Mode:
 

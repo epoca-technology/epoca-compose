@@ -56,7 +56,7 @@ services:
       telegraf: ${telegraf}
       recaptchaSecret: ${recaptchaSecret}
       god: ${god}
-      firebaseServiceAccount: ${firebaseServiceAccount}
+      firebase: ${firebase}
       PORT: 5075
     ports:
       - "5075:5075"
