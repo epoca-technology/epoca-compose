@@ -49,6 +49,7 @@ services:
       NODE_ENV: ${NODE_ENV}
       testMode: ${testMode}
       debugMode: ${debugMode}
+      restoreMode: ${restoreMode}
       POSTGRES_HOST: ${POSTGRES_HOST}
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
@@ -77,6 +78,7 @@ services:
       NODE_ENV: ${NODE_ENV}
       testMode: ${testMode}
       debugMode: ${debugMode}
+      restoreMode: ${restoreMode}
       POSTGRES_HOST: ${POSTGRES_HOST}
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}

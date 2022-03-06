@@ -16,6 +16,8 @@ Plutus Compose is a CLI designed to perform sensitive operations and can run wit
 - Install dependencies with `npm install` 
 
 
+
+
 #
 # Containers Management
 
@@ -35,6 +37,12 @@ Start Containers in Test Mode:
 Start Containers in Debug Mode:
 
 `debugMode=true docker-compose up --build -d`
+
+
+Start Containers in Restore Mode:
+
+`restoreMode=true docker-compose up --build -d`
+
 
 
 
