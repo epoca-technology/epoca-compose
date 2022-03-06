@@ -1,0 +1,12 @@
+{
+    "rules": {
+        ".write": false,
+        "apiSecret": {
+            "$uid": {
+                "s": {
+                    ".read": "auth != null && auth.uid == $uid && auth.token.authority >= 1"
+                }
+            }
+        }
+    }
+}

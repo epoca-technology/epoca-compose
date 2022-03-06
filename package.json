@@ -1,0 +1,41 @@
+{
+    "name": "compose",
+    "version": "1.0.0",
+    "description": "Plutus is an automated trading system for Bitcoin which leverages the latest technologies.",
+    "main": "index.js",
+    "scripts": {
+        "up": "docker-compose up -d",
+        "build-up": "docker-compose up --build -d",
+        "down": "docker-compose down",
+        "prune": "docker container prune && docker image prune",
+
+        "build": "clear && gulp && clear",
+        "generate-password": "npm run build && node ./dist/generatePassword.js",
+        "generate-god-skeleton": "npm run build && node ./dist/generateGodSkeleton.js",
+        "generate-environment": "npm run build && node ./dist/generateEnvironment.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@bitbucket.org/projectplutus/compose.git"
+    },
+    "author": "Plutus",
+    "license": "ISC",
+    "homepage": "https://bitbucket.org/projectplutus/compose#readme",
+    "dependencies": {
+        "generate-password": "1.7.0",
+        "json-stable-stringify": "1.0.1",
+        "otplib": "12.0.1",
+        "prompt": "1.2.2",
+        "uuid": "8.3.2"
+    },
+    "devDependencies": {
+        "@types/prompt": "1.1.2",
+        "@types/uuid": "8.3.4",
+        "gulp": "4.0.2",
+        "gulp-clean": "0.4.0",
+        "gulp-minify": "3.1.0",
+        "gulp-typescript": "6.0.0-alpha.1",
+        "ts-node": "10.7.0",
+        "typescript": "4.6.2"
+    }
+}

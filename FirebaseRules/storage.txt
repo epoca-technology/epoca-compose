@@ -1,0 +1,16 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Public
+    match /public/{allPaths=**} {
+      allow read;
+      allow write: if false;
+    }
+  
+    // DB Backups
+    match /db_backups/{allPaths=**} {
+      allow read: if request.auth != null && request.auth.token.authority == 5;
+      allow write: if false;
+    }
+  }
+}

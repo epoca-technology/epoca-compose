@@ -50,3 +50,9 @@ Thumbs.db
 
 # Environment Variables
 *.env
+
+# Environment Information
+environment
+
+# Volumes data
+postgresdata
