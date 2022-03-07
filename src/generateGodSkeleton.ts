@@ -13,7 +13,7 @@ console.log(' ');
 prompt.start();
 
 
-prompt.get(['email'], async (e: any, data: prompt.Properties) => {
+prompt.get(['email'], (e: any, data: prompt.Properties) => {
     if (e) throw e;
 
     // Generate the god based on provided email

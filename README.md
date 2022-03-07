@@ -3,6 +3,16 @@
 Plutus Compose is a CLI designed to perform sensitive operations and can run without an active Internet connection. It also takes care of managing the project's containers by making use of Docker Compose.
 
 
+## Docs
+
+- [Core API Errors](./docs/CORE_API_ERRORS.md)
+
+- [Forecast API Errors](./docs/FORECAST_API_ERRORS.md)
+
+- [Docker](./docs/guides/DOCKER.md)
+
+
+
 ## Requirements
 
 - Docker: 20.10.12
@@ -22,6 +32,27 @@ compose
     │
     .env
 ```
+
+
+#
+# Docker Compose File
+
+The `docker-compose.yml` is generated from the `./docker-compose` directory based on the mode containers are running in. Changes need to be applied to the files within the `./docker-compose` directory as the `docker-compose.yml` located in root is replaced when scripts are executed.
+
+```
+compose
+    │
+    docker-compose
+    │
+    └───default-mode
+    │
+    └───debug-mode
+    │
+    └───test-mode
+    │
+    └───restore-mode
+```
+
 
 #
 # Containers Management
@@ -50,7 +81,9 @@ Build & Start Containers in Restore Mode:
 
 `npm run restore-mode`
 
+Removes the dangling containers and images:
 
+`npm run prune`
 
 
 #
@@ -60,13 +93,15 @@ Build & Start Containers in Restore Mode:
 
 Dumps, compresses and uploads the Database to Firebase Storage. Once uploaded, it cleans up the volume:
 
-`npm run backup-database`
+`npm run database-backup`
 
 ## Database Restore
 
 Downloads and restores a given database backup. Once restored, it cleans up the volume:
 
-`npm run restore-database DUMP_NAME.dump`
+*IMPORTANT: The containers must be running on **restore mode**.* 
+
+`npm run database-restore`
 
 
 
@@ -127,3 +162,40 @@ compose
 7) **windows.txt**: Environment Variables for Windows Distributions.
 
 **IMPORTANT:** Once the files have been placed in an encrypted container, make sure to remove all the readable copies stored in the machine (Including the Trash). You can also achieve this by simply running the script again as it will replace all the output files with the default source.json file.
+
+
+
+
+
+
+#
+# Containerized Unit Tests
+
+## Core API
+
+**End-to-end:** `npm run test-core`
+
+**API Error:** `npm run test-core-api-error`
+
+**Auth:** `npm run test-core-auth`
+
+**Candlestick:** `npm run test-core-candlestick`
+
+**Database:** `npm run test-core-db`
+
+**GUI Version:** `npm run test-core-gui-version`
+
+**IP Blacklist:** `npm run test-core-ip-blacklist`
+
+**Notification:** `npm run test-core-notification`
+
+**Server:** `npm run test-core-server`
+
+**Trading Simulation:** `npm run test-core-trading-simulation`
+
+**Utilities:** `npm run test-core-utils`
+
+
+## Forecast API
+
+**End-to-end:** `npm run test-forecast`

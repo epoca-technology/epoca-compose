@@ -17,7 +17,7 @@ prompt.start();
 
 
 
-prompt.get(['passwordLength', 'numbers', 'symbols', 'lowercase', 'uppercase'], async (e: any, data: prompt.Properties) => {
+prompt.get(['passwordLength', 'numbers', 'symbols', 'lowercase', 'uppercase'], (e: any, data: prompt.Properties) => {
     if (e) throw e;
 
     // Generate the password based on provided params or defaults
