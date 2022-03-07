@@ -11,6 +11,7 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
     volumes: 
       - pgdata:/var/lib/postgresql/data
+      - pgdata-management:/var/lib/pgdata-management
     ports:
       - "5432:5432"
     logging:
@@ -61,6 +62,8 @@ services:
       PORT: 5075
     ports:
       - "5075:5075"
+    volumes: 
+      - pgdata-management:/var/lib/pgdata-management
     logging:
       driver: local
       options:
@@ -132,4 +135,5 @@ services:
 
 volumes:
     pgdata:
+    pgdata-management:
     pgadmin-data:

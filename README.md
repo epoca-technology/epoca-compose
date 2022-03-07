@@ -15,34 +15,58 @@ Plutus Compose is a CLI designed to perform sensitive operations and can run wit
 
 - Install dependencies with `npm install` 
 
+- The `.env` file must be placed in the root directory
 
-
+```
+compose
+    │
+    .env
+```
 
 #
 # Containers Management
 
 Start Containers:
 
-`docker-compose up -d`
+`npm run up`
+
+Stop Containers:
+
+`npm run down`
 
 Build & Start Containers:
 
-`docker-compose up --build -d`
+`npm run build`
 
-Start Containers in Test Mode:
+Build & Start Containers in Test Mode:
 
-`testMode=true docker-compose up --build -d`
+`npm run test-mode`
+
+Build & Start Containers in Debug Mode:
+
+`npm run debug-mode`
+
+Build & Start Containers in Restore Mode:
+
+`npm run restore-mode`
 
 
-Start Containers in Debug Mode:
-
-`debugMode=true docker-compose up --build -d`
 
 
-Start Containers in Restore Mode:
+#
+# Database Management
 
-`restoreMode=true docker-compose up --build -d`
+## Database Backup
 
+Dumps, compresses and uploads the Database to Firebase Storage. Once uploaded, it cleans up the volume:
+
+`npm run backup-database`
+
+## Database Restore
+
+Downloads and restores a given database backup. Once restored, it cleans up the volume:
+
+`npm run restore-database DUMP_NAME.dump`
 
 
 
@@ -75,7 +99,7 @@ Before running the script, make sure you have filled the `./environment/source.j
 After the script is executed, it will clear the values from the `environment/source.json` file and place the following files inside of the `/environment/output` directory:
 
 ```
-security
+compose
     │
     environment
     │

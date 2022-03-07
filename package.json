@@ -5,13 +5,14 @@
     "main": "index.js",
     "scripts": {
         "up": "docker-compose up -d",
-        "build-up": "docker-compose up --build -d",
         "down": "docker-compose down",
-        "prune": "docker container prune && docker image prune",
+        "build": "docker-compose up --build -d",
         "test-mode": "testMode=true docker-compose up --build -d",
         "debug-mode": "debugMode=true docker-compose up --build -d",
         "restore-mode": "restoreMode=true docker-compose up --build -d",
-        
+        "prune": "docker container prune && docker image prune",
+        "backup-database": "gulp && node ./dist/backupDatabase.js",
+        "restore-database": "gulp && node ./dist/restoreDatabase.js",
         "generate-password": "gulp && node ./dist/generatePassword.js",
         "generate-god-skeleton": "gulp && node ./dist/generateGodSkeleton.js",
         "generate-environment": "gulp && node ./dist/generateEnvironment.js"
@@ -24,6 +25,7 @@
     "license": "ISC",
     "homepage": "https://bitbucket.org/projectplutus/compose#readme",
     "dependencies": {
+        "@getvim/execute": "1.0.0",
         "generate-password": "1.7.0",
         "json-stable-stringify": "1.0.1",
         "otplib": "12.0.1",

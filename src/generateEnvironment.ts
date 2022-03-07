@@ -1,7 +1,7 @@
 // Dependencies 
 import * as prompt from 'prompt';
 
-// Init God Class
+// Init Environment Class
 import {Environment, IEnvironment} from "./Environment"
 const _environment: IEnvironment = new Environment();
 

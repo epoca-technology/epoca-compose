@@ -56,3 +56,4 @@ environment
 
 # Volumes data
 postgresdata
+pgdata-management
