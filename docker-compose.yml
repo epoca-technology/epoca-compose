@@ -19,6 +19,26 @@ services:
       options:
         max-size: 10m
         max-file: "10"
+  # PG Admin Service
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4:4.18
+    restart: always
+    depends_on:
+      - postgres
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+      PGADMIN_LISTEN_PORT: 80
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    ports:
+      - "8080:80"
+    logging:
+      driver: local
+      options:
+        max-size: 10m
+        max-file: "10"
   # API Service
   api:
     extends:
@@ -29,7 +49,7 @@ services:
     environment:
       NODE_ENV: ${NODE_ENV}
       debugMode: "false"
-      testMode: "true"
+      testMode: "false"
       restoreMode: "false"
       POSTGRES_HOST: ${POSTGRES_HOST}
       POSTGRES_USER: ${POSTGRES_USER}
@@ -60,7 +80,7 @@ services:
     environment:
       NODE_ENV: ${NODE_ENV}
       debugMode: "false"
-      testMode: "true"
+      testMode: "false"
       restoreMode: "false"
       POSTGRES_HOST: ${POSTGRES_HOST}
       POSTGRES_USER: ${POSTGRES_USER}
@@ -74,6 +94,45 @@ services:
       options:
         max-size: 10m
         max-file: "10"
+  # Dozzle Service      
+  dozzle:
+    container_name: dozzle
+    image: amir20/dozzle:latest
+    environment:
+      DOZZLE_TAILSIZE: 300
+      DOZZLE_USERNAME: ${DOZZLE_USERNAME}
+      DOZZLE_PASSWORD: ${DOZZLE_PASSWORD}
+      DOZZLE_KEY: ${DOZZLE_KEY}
+      DOZZLE_NO_ANALYTICS: "true"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 8085:8080
+    logging:
+      driver: local
+      options:
+        max-size: 10m
+        max-file: "10"
+  # GUI Service
+  gui:
+    extends:
+      file: ../gui-${NODE_ENV}/docker-compose.yml
+      service: gui
+    build: 
+      args:
+        NODE_ENV: ${NODE_ENV}
+    depends_on:
+      - postgres
+      - api
+      - forecast-api
+    ports:
+      - "8090:80"
+    logging:
+      driver: local
+      options:
+        max-size: 10m
+        max-file: "10"
 volumes:
     pgdata:
     pgdata-management:
+    pgadmin-data:

@@ -57,3 +57,7 @@ environment
 # Volumes data
 postgresdata
 pgdata-management
+
+
+# Automatically generated docker-compose.yml file
+docker-compose.yml
