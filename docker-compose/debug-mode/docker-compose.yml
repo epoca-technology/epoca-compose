@@ -39,7 +39,7 @@ services:
       options:
         max-size: 10m
         max-file: "10"
-  # API Service
+  # Core API Service
   api:
     extends:
       file: ../api-${NODE_ENV}/docker-compose.yml

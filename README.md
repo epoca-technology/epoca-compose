@@ -171,6 +171,8 @@ compose
 #
 # Containerized Unit Tests
 
+In order to be able to execute these tests, you must initialize the containers with `npm run test-mode`.
+
 ## Core API
 
 **End-to-end:** `npm run test-core`
