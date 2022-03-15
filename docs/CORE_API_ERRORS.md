@@ -119,7 +119,7 @@
 
 8303: `The uid couldnt be extracted when verifying the ID Token.`
 
-8304: `The uid couldnt be extracted when verifying the ID Token.`
+8304: `The ID Token has expired. Please generate a new one and try again.`
 
 
 ### Auth Validations
@@ -213,6 +213,8 @@
 12001: `The API cannot accept requests because it has not yet been initialized.`
 
 12002: `The param (${paramKey}) is required but was not provided.`
+
+12002: `The API cannot accept requests because it is running on restore mode.`
 
 
 
