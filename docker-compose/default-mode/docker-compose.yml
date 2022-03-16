@@ -79,6 +79,10 @@ services:
       - api
     environment:
       NODE_ENV: ${NODE_ENV}
+      FLASK_ENV: ${NODE_ENV}
+      FLASK_APP: "dist/index.py"
+      FLASK_RUN_HOST: "0.0.0.0"
+      FLASK_DEBUG: "False"
       debugMode: "false"
       testMode: "false"
       restoreMode: "false"
