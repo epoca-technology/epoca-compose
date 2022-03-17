@@ -63,6 +63,7 @@ services:
       FLASK_APP: "dist/index.py"
       FLASK_RUN_HOST: "0.0.0.0"
       FLASK_DEBUG: "False"
+      PYTHONPATH: "/usr/src/app/dist"
       debugMode: "false"
       testMode: "false"
       restoreMode: "true"
