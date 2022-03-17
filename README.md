@@ -201,3 +201,5 @@ In order to be able to execute these tests, you must initialize the containers w
 ## Forecast API
 
 **End-to-end:** `npm run test-forecast`
+
+**Utilities:** `npm run test-forecast-utils`

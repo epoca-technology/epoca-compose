@@ -26,7 +26,9 @@
         "test-core-notification": "docker exec api docker-entrypoint.sh npm run test-notification",
         "test-core-server": "docker exec api docker-entrypoint.sh npm run test-server",
         "test-core-trading-simulation": "docker exec api docker-entrypoint.sh npm run test-trading-simulation",
-        "test-core-utils": "docker exec api docker-entrypoint.sh npm run test-utils"
+        "test-core-utils": "docker exec api docker-entrypoint.sh npm run test-utils",
+        "test-forecast": "docker exec forecast-api python -m unittest discover -s tests -p '*_test.py'",
+        "test-forecast-utils": "docker exec forecast-api python -m unittest discover -s tests -p 'utilities_test.py'"
     },
     "repository": {
         "type": "git",
