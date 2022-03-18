@@ -202,4 +202,8 @@ In order to be able to execute these tests, you must initialize the containers w
 
 **End-to-end:** `npm run test-forecast`
 
+**Api Error:** `npm run test-forecast-api-error`
+
+**Candlestick:** `npm run test-forecast-candlestick`
+
 **Utilities:** `npm run test-forecast-utils`

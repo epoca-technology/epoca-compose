@@ -28,6 +28,8 @@
         "test-core-trading-simulation": "docker exec api docker-entrypoint.sh npm run test-trading-simulation",
         "test-core-utils": "docker exec api docker-entrypoint.sh npm run test-utils",
         "test-forecast": "docker exec forecast-api python -m unittest discover -s tests -p '*_test.py'",
+        "test-forecast-api-error": "docker exec forecast-api python -m unittest discover -s tests -p 'api_error_test.py'",
+        "test-forecast-candlestick": "docker exec forecast-api python -m unittest discover -s tests -p 'candlestick_test.py'",
         "test-forecast-utils": "docker exec forecast-api python -m unittest discover -s tests -p 'utilities_test.py'"
     },
     "repository": {
