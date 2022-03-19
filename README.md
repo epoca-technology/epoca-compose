@@ -34,6 +34,8 @@ compose
 ```
 
 
+
+
 #
 # Docker Compose File
 
@@ -52,6 +54,8 @@ compose
     │
     └───restore-mode
 ```
+
+
 
 
 #
@@ -86,6 +90,9 @@ Removes the dangling containers and images:
 `npm run prune`
 
 
+
+
+
 #
 # Database Management
 
@@ -103,6 +110,15 @@ Downloads and restores a given database backup. Once restored, it cleans up the 
 
 `npm run database-restore`
 
+
+
+
+#
+# Candlesticks Spreadsheet
+
+Generates and uploads the Forecast Candlesticks Spreadsheet to Firebase Storage. Once uploaded, it cleans up the volume:
+
+`npm run generate-candlesticks-spreadsheet`
 
 
 
@@ -172,6 +188,10 @@ compose
 # Containerized Unit Tests
 
 In order to be able to execute these tests, you must initialize the containers with `npm run test-mode`.
+
+## End-to-end Tests
+
+`npm run test`
 
 ## Core API
 

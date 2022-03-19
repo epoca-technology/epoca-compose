@@ -42,10 +42,4 @@ async function main(): Promise<void> {
 
 
 // Execute the function
-main()
-.then(() => {
-    process.exit(0);
-})
-.catch(e => { 
-    process.exit(1);
-});
+main().then(() => { process.exit(0) }).catch(e => { process.exit(1) });

@@ -65,6 +65,7 @@ services:
       - "5075:5075"
     volumes: 
       - pgdata-management:/var/lib/pgdata-management
+      - candlestick-spreadsheets:/var/lib/candlestick-spreadsheets
     logging:
       driver: local
       options:
@@ -143,3 +144,4 @@ volumes:
     pgdata:
     pgdata-management:
     pgadmin-data:
+    candlestick-spreadsheets:

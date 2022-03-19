@@ -12,5 +12,11 @@ service firebase.storage {
       allow read: if request.auth != null && request.auth.token.authority == 5;
       allow write: if false;
     }
+
+    // Candlestick Spreadsheets
+    match /candlestick_spreadsheets/{allPaths=**} {
+      allow read: if request.auth != null && request.auth.token.authority >= 2;
+      allow write: if false;
+    }
   }
 }
