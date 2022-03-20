@@ -38,7 +38,7 @@ prompt.get(['backupName'], async (e: any, data: prompt.Properties) => {
     try {
         console.log(' ');
         console.log('2/3) Restoring the Database Backup...');
-        await execute(`docker exec postgres docker-entrypoint.sh pg_restore --clean -U postgres -d postgres /var/lib/pgdata-management/${name}`);
+        await execute(`docker exec postgres pg_restore --clean -U postgres -d postgres /var/lib/pgdata-management/${name}`);
         console.log(`The Database Backup ${name} has been restored successfully.`);
         console.log(' ');
     } catch (e) {

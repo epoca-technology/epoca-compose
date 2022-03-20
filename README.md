@@ -69,6 +69,10 @@ Stop Containers:
 
 `npm run down`
 
+Restarts all the running containers without rebuilding the images:
+
+`npm run restart`
+
 Build & Start Containers:
 
 `npm run build`

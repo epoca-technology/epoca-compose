@@ -17,7 +17,7 @@ async function main(): Promise<void> {
     try {
         console.log(' ');
         console.log('1/2) Dumping database into the pgdata-management volume...');
-        await execute(`docker exec postgres docker-entrypoint.sh pg_dump -U postgres -f /var/lib/pgdata-management/${name} -Fc`);
+        await execute(`docker exec postgres pg_dump -U postgres -f /var/lib/pgdata-management/${name} -Fc`);
         console.log(`Database Backup ${name} was dumped successfully.`);
         console.log(' ');
     } catch (e) {
