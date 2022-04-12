@@ -124,6 +124,30 @@ Generates and uploads the Forecast Candlesticks Spreadsheet to Firebase Storage.
 
 `npm run generate-candlesticks-spreadsheet`
 
+In order to generate a candlesticks spreadsheet pair run the following command:
+
+`npm run generate-candlesticks-spreadsheet-pair`
+
+Once the execution completes, the files will be placed in **candlestick-spreadsheets** volume located in **/var/lib/candlestick-spreadsheets**
+
+To access the files follow these steps:
+
+
+1) Retrieve the Volume's Mountpoint with the following command:
+
+- `docker inspect compose_candlestick-spreadsheets`
+
+2) Initialize a shell as root: 
+
+- `sudo -i`
+
+3) Navigate to the Volume's Mountpoint:
+
+- `cd /var/lib/docker/volumes/compose_candlestick-spreadsheets/_data`
+
+4) Copy both files and place them in the desktop:
+
+- `cp candlesticks.csv /home/jessdotjs/Desktop/ && cp forecast_candlesticks.csv /home/jessdotjs/Desktop/`
 
 
 #

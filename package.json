@@ -15,6 +15,7 @@
         "database-backup": "gulp buildCLI && node ./dist/databaseBackup.js",
         "database-restore": "gulp buildCLI && node ./dist/databaseRestore.js",
         "generate-candlesticks-spreadsheet": "gulp buildCLI && node ./dist/generateCandlesticksSpreadsheet.js",
+        "generate-candlesticks-spreadsheet-pair": "gulp buildCLI && node ./dist/generateCandlesticksSpreadsheetPair.js",
         "generate-password": "gulp buildCLI && node ./dist/generatePassword.js",
         "generate-god-skeleton": "gulp buildCLI && node ./dist/generateGodSkeleton.js",
         "generate-environment": "gulp buildCLI && node ./dist/generateEnvironment.js",
