@@ -18,5 +18,11 @@ service firebase.storage {
       allow read: if request.auth != null && request.auth.token.authority >= 2;
       allow write: if false;
     }
+
+    // Arima Cache
+    match /arima_cache/{allPaths=**} {
+      allow read: if request.auth != null && request.auth.token.authority >= 3;
+      allow write: if false;
+    }
   }
 }
