@@ -50,11 +50,11 @@ services:
       options:
         max-size: 10m
         max-file: "10"
-  # Forecast API Service
-  forecast-api:
+  # Prediction API Service
+  prediction-api:
     extends:
-      file: ../forecast-api-${NODE_ENV}/docker-compose.yml
-      service: forecast-api
+      file: ../prediction-api-${NODE_ENV}/docker-compose.yml
+      service: prediction-api
     depends_on:
       - postgres
       - api

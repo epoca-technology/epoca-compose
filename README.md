@@ -1,13 +1,13 @@
-# PLUTUS COMPOSE
+# EPOCA COMPOSE
 
-Plutus Compose is a CLI designed to perform sensitive operations and can run without an active Internet connection. It also takes care of managing the project's containers by making use of Docker Compose.
+Epoca Compose is a CLI designed to perform sensitive operations and can run without an active Internet connection. It also takes care of managing the project's containers by making use of Docker Compose.
 
 
 ## Docs
 
 - [Core API Errors](./docs/CORE_API_ERRORS.md)
 
-- [Forecast API Errors](./docs/FORECAST_API_ERRORS.md)
+- [Prediction API Errors](./docs/PREDICTION_API_ERRORS.md)
 
 - [Docker](./docs/guides/DOCKER.md)
 
@@ -117,38 +117,6 @@ Downloads and restores a given database backup. Once restored, it cleans up the 
 
 
 
-#
-# Candlesticks Spreadsheet
-
-Generates and uploads the Forecast Candlesticks Spreadsheet to Firebase Storage. Once uploaded, it cleans up the volume:
-
-`npm run generate-candlesticks-spreadsheet`
-
-In order to generate a candlesticks spreadsheet pair run the following command:
-
-`npm run generate-candlesticks-spreadsheet-pair`
-
-Once the execution completes, the files will be placed in **candlestick-spreadsheets** volume located in **/var/lib/candlestick-spreadsheets**
-
-To access the files follow these steps:
-
-
-1) Retrieve the Volume's Mountpoint with the following command:
-
-- `docker inspect compose_candlestick-spreadsheets`
-
-2) Initialize a shell as root: 
-
-- `sudo -i`
-
-3) Navigate to the Volume's Mountpoint:
-
-- `cd /var/lib/docker/volumes/compose_candlestick-spreadsheets/_data`
-
-4) Copy both files and place them in the desktop:
-
-- `cp candlesticks.csv /home/jessdotjs/Desktop/ && cp forecast_candlesticks.csv /home/jessdotjs/Desktop/`
-
 
 #
 # General Helpers
@@ -246,12 +214,12 @@ In order to be able to execute these tests, you must initialize the containers w
 **Utilities:** `npm run test-core-utils`
 
 
-## Forecast API
+## Prediction API
 
-**End-to-end:** `npm run test-forecast`
+**End-to-end:** `npm run test-prediction`
 
-**Api Error:** `npm run test-forecast-api-error`
+**Api Error:** `npm run test-prediction-api-error`
 
-**Candlestick:** `npm run test-forecast-candlestick`
+**Candlestick:** `npm run test-prediction-candlestick`
 
-**Utilities:** `npm run test-forecast-utils`
+**Utilities:** `npm run test-prediction-utils`

@@ -13,15 +13,15 @@ service firebase.storage {
       allow write: if false;
     }
 
-    // Candlestick Spreadsheets
-    match /candlestick_spreadsheets/{allPaths=**} {
+    // Prediction Candlestick Files
+    match /prediction_candlesticks/{allPaths=**} {
       allow read: if request.auth != null && request.auth.token.authority >= 2;
       allow write: if false;
     }
 
-    // Arima Cache
-    match /arima_cache/{allPaths=**} {
-      allow read: if request.auth != null && request.auth.token.authority >= 3;
+    // Candlestick Bundle Files
+    match /candlesticks_bundle/{allPaths=**} {
+      allow read: if request.auth != null && request.auth.token.authority >= 2;
       allow write: if false;
     }
   }

@@ -65,17 +65,17 @@ services:
       - "5075:5075"
     volumes: 
       - pgdata-management:/var/lib/pgdata-management
-      - candlestick-spreadsheets:/var/lib/candlestick-spreadsheets
+      - candlestick-files-management:/var/lib/candlestick-files-management
     logging:
       driver: local
       options:
         max-size: 10m
         max-file: "10"
-  # Forecast API Service
-  forecast-api:
+  # Prediction API Service
+  prediction-api:
     extends:
-      file: ../forecast-api-${NODE_ENV}/docker-compose.yml
-      service: forecast-api
+      file: ../prediction-api-${NODE_ENV}/docker-compose.yml
+      service: prediction-api
     depends_on:
       - postgres
       - api
@@ -132,7 +132,7 @@ services:
     depends_on:
       - postgres
       - api
-      - forecast-api
+      - prediction-api
     ports:
       - "8090:80"
     logging:
@@ -144,4 +144,4 @@ volumes:
     pgdata:
     pgdata-management:
     pgadmin-data:
-    candlestick-spreadsheets:
+    candlestick-files-management:

@@ -24,6 +24,8 @@ List Databases: `\l`
 
 Select Database: `\c plutus;`
 
+Start Status: `sudo service postgresql status`
+
 Start Service: `sudo service postgresql start`
 
 Stop Service: `sudo service postgresql stop`
@@ -32,7 +34,7 @@ Stop Service: `sudo service postgresql stop`
 ##
 ## Database User
 
-Setup the password on the postgres user: 
+Setup the password on the postgres user through PSQL: 
 
 `ALTER USER postgres WITH PASSWORD 'C*KQiVaNdBYm,J#q$VU83kkSk|o)J6m.d#6A,$}r1XeKMd2g~d';`
 

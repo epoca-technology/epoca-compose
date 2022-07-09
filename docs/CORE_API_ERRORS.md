@@ -15,9 +15,11 @@
 
 1000: `The Binance API should have returned at least 1 candlestick.`
 
+
 ### Candlestick Model
 
 1200: `A valid list of candlesticks is required in order to invoke saveCandlesticks.`
+
 
 ### Candlestick Validations
 
@@ -26,6 +28,15 @@
 1301: `The end (${end}) timestamp must be greater than the start (${start}) timestamp.`
 
 1302: `The provided minutes interval (${intervalMinutes}) is invalid.`
+
+
+### Candlestick File Service
+
+1500: `Couldnt build a candlesticks csv file because the retrieved list is empty.`
+
+1501: `The candlesticks file cannot be generated because there is a task running.`
+
+
 
 
 #
@@ -228,3 +239,44 @@
 ## API Error (13.000 - 13.999)
 
 13000: ``
+
+
+
+
+
+
+
+
+#
+## Background Task (14.000 - 14.999)
+
+14000: `The task ${this.task.name} cannot be started because it is already running.`
+
+14001: `The task ${this.task.name} progress cannot be updated because there isnt a task running.`
+
+14002: `The task ${this.task.name} progress cannot be updated because an invalid value was provided(${currentProgress}).`
+
+14003: `The task ${this.task.name} cannot be marked as errored because there isnt a task running.`
+
+
+
+
+
+
+#
+## File Manager (15.000 - 15.999)
+
+15000: `Google Cloud returned an invalid response when uploading ${originPath}.`
+
+15001: `The upload process went through normally. However, the cloud file could not be listed in: ${destinationCloudPath}.`
+
+15002: `Google Cloud returned an invalid response when downloading ${originCloudPath}.`
+
+15003: `The downloaded file was not found in the local directory ${destinationPath}.`
+
+15004: `The Google Cloud Download did not return valid files for ${cloudPath}.`
+
+15005: `Google Cloud returned a valid response. However, no files could be extracted in: ${cloudPath}.`
+
+
+
