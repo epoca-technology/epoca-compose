@@ -29,15 +29,15 @@ export class Password implements IPassword {
         const password: string =  generate({
             length: typeof options.length == "number" ? options.length: 50,
             numbers: typeof options.numbers == "boolean" ? options.numbers: true,
-            symbols: typeof options.symbols == "boolean" ? options.symbols: true,
             lowercase: typeof options.lowercase == "boolean" ? options.lowercase: true,
             uppercase: typeof options.uppercase == "boolean" ? options.uppercase: true,
+            symbols: typeof options.symbols == "boolean" ? options.symbols: true,
             exclude: `"'=`,
             strict: true
         });
 
         // Validate the password
-        if (!this.passwordValid(password)) throw new Error(`The generated password is invalid: ${password}`);
+        if (!this.passwordValid(password, options.length)) throw new Error(`The generated password is invalid: ${password}`);
 
         // Return the password
         return password;
@@ -72,15 +72,12 @@ export class Password implements IPassword {
     * * 1 lowercase letter
     * * 1 number
     * @param password
+    * @param passwordLength
     * @returns boolean
     * */
-    public passwordValid(password: string): boolean {
-        // Init required length
-        const minLength: number = 7;
-        const maxLength: number = 200;
-
+    public passwordValid(password: string, passwordLength: number): boolean {
         // Check the type
-        if (typeof password == "string" && password.length) {
+        if (typeof password == "string" && password.length == passwordLength) {
             // Init Character Types Regex & counters
             const anUpperCase: RegExp = /[A-Z]/;
             const aLowerCase: RegExp = /[a-z]/;
@@ -100,8 +97,6 @@ export class Password implements IPassword {
             return  numUpper > 0 && 
                     numLower > 0 && 
                     numNums > 0 && 
-                    password.length >= minLength && 
-                    password.length <= maxLength && 
                     !password.includes('=') &&
                     !password.includes('"') &&
                     !password.includes("'");

@@ -7,7 +7,7 @@ export interface IPassword {
     generatePassword(options?: GenerateOptions): string,
 
     // Validations
-    passwordValid(password: string): boolean,
+    passwordValid(password: string, passwordLength: number): boolean,
 }
 
 

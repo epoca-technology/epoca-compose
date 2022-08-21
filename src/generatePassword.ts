@@ -17,16 +17,16 @@ prompt.start();
 
 
 
-prompt.get(['passwordLength', 'numbers', 'symbols', 'lowercase', 'uppercase'], (e: any, data: prompt.Properties) => {
+prompt.get(['passwordLength', 'numbers', 'lowercase', 'uppercase', 'symbols'], (e: any, data: prompt.Properties) => {
     if (e) throw e;
 
     // Generate the password based on provided params or defaults
     const password: string = _password.generatePassword({
         length: getNumberValue(<string>data.passwordLength),
         numbers: getBooleanValue(<string>data.numbers),
-        symbols: getBooleanValue(<string>data.symbols),
         lowercase: getBooleanValue(<string>data.lowercase),
         uppercase: getBooleanValue(<string>data.uppercase),
+        symbols: getBooleanValue(<string>data.symbols),
     });
 
     // Output it on the console
