@@ -32,7 +32,7 @@ export class Password implements IPassword {
             lowercase: typeof options.lowercase == "boolean" ? options.lowercase: true,
             uppercase: typeof options.uppercase == "boolean" ? options.uppercase: true,
             symbols: typeof options.symbols == "boolean" ? options.symbols: true,
-            exclude: `"'=`,
+            exclude: `"'=$`,
             strict: true
         });
 
