@@ -5,10 +5,6 @@ Epoca Compose is a CLI designed to perform sensitive operations and can run with
 
 ## Docs
 
-- [Core API Errors](./docs/CORE_API_ERRORS.md)
-
-- [Prediction API Errors](./docs/PREDICTION_API_ERRORS.md)
-
 - [Docker](./docs/guides/DOCKER.md)
 
 

@@ -45,6 +45,7 @@ services:
       - "5075:5075"
     volumes: 
       - pgdata-management:/var/lib/pgdata-management
+      - epoch:/var/lib/epoch
     logging:
       driver: local
       options:
@@ -76,6 +77,8 @@ services:
       PORT: 5000
     ports:
       - "5000:5000"
+    volumes: 
+      - epoch:/var/lib/epoch
     logging:
       driver: local
       options:
@@ -84,3 +87,4 @@ services:
 volumes:
     pgdata:
     pgdata-management:
+    epoch:
