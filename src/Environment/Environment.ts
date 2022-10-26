@@ -5,8 +5,8 @@ import {
     IOutputPaths,
     IOutputFiles
 } from "./interfaces";
-import { v4 as uuidv4 } from 'uuid';
-import * as stringify from 'json-stable-stringify';
+import { v4 as uuidv4 } from "uuid";
+import * as stringify from "json-stable-stringify";
 
 
 
@@ -92,18 +92,18 @@ export class Environment implements IEnvironment {
         const keys: string[] = Object.keys(env);
         if (!keys.length) {
             console.log(env);
-            throw new Error('Couldnt build the output files because the environment object doesnt have valid keys.');
+            throw new Error("Couldnt build the output files because the environment object doesnt have valid keys.");
         }
 
         // Init Files
         const info: string = this.buildInfoFile();
-        let index: string = '';
-        let container: string = '';
-        let linux: string = '';
-        let windows: string = '';
+        let index: string = "";
+        let container: string = "";
+        let linux: string = "";
+        let windows: string = "";
 
         // Init Helpers
-        const suffix: string = ' && ';
+        const suffix: string = " && ";
 
         // Build the Files
         let key: string;
@@ -159,10 +159,10 @@ export class Environment implements IEnvironment {
         const date: string = new Date().toDateString();
 
         // Build the File
-        let info: string = 'ENVIRONMENT INFO\n\n';
+        let info: string = "ENVIRONMENT INFO\n\n";
         info += `ID: ${id}\n\n`;
         info += `Date: ${date}\n\n`;
-        info += 'Files:\n';
+        info += "Files:\n";
         for (let key in this.output) { info += `${this.output[key]}\n` }
         return info;
     }
@@ -200,10 +200,10 @@ export class Environment implements IEnvironment {
         let extractedEnv: IEnvironmentObject = {};
 
         // Iterate over each value in the linux file and populated the object with string values
-        let vars: string[] = linux.split(' && ');
+        let vars: string[] = linux.split(" && ");
         for (let v of vars) {
-            const raw = v.replace('export ', '').split("='");
-            extractedEnv[raw[0]] = raw[1].replace("'", '');
+            const raw = v.replace("export ", "").split("='");
+            extractedEnv[raw[0]] = raw[1].replace("'", "");
         }
 
         // Iterate over the source environment and make sure all properties are equal
@@ -229,7 +229,7 @@ export class Environment implements IEnvironment {
         const type: string = typeof original;
         switch(type) {
             case "boolean":
-                if (original != (extracted == 'true')) {
+                if (original != (extracted == "true")) {
                     console.log(original);
                     console.log(extracted);
                     throw new Error(`Boolean Integrity Validation Failed: ${key}.`);
@@ -299,7 +299,7 @@ export class Environment implements IEnvironment {
                 return JSON.parse(sourceRaw);
             } catch (e) {
                 console.error(e);
-                throw new Error('The source content could not be converted into a JSON Object.');
+                throw new Error("The source content could not be converted into a JSON Object.");
             }
         } else {
             console.log(sourceRaw);
@@ -341,13 +341,13 @@ export class Environment implements IEnvironment {
      * Checks if all the directories exist, otherwise it creates them.
      */
     private initializeEnvironmentDirectories(): void {
-        // Create the environment and output directories if they don't exist
-        fs.mkdirSync('./environment', {recursive: true});
-        fs.mkdirSync('./environment/output', {recursive: true});
+        // Create the environment and output directories if they don"t exist
+        fs.mkdirSync("./environment", {recursive: true});
+        fs.mkdirSync("./environment/output", {recursive: true});
 
         // Check if the source file exists, otherwise create it
         try {
-            fs.readFileSync(this.source, { encoding: 'utf-8' });
+            fs.readFileSync(this.source, { encoding: "utf-8" });
         } catch (e) {
             // If an error is thrown, create the file
             this.resetSource();
@@ -377,7 +377,7 @@ export class Environment implements IEnvironment {
      * @param path 
      * @returns string
      */
-    private readFile(path: string): string { return fs.readFileSync(path, { encoding: 'utf-8' }) }
+    private readFile(path: string): string { return fs.readFileSync(path, { encoding: "utf-8" }) }
 
 
 
@@ -391,5 +391,5 @@ export class Environment implements IEnvironment {
      * @param content 
      * @returns void
      */
-    private writeFile(path: string, content: string): void { fs.writeFileSync(path, content, { flag: 'w' }) }
+    private writeFile(path: string, content: string): void { fs.writeFileSync(path, content, { flag: "w" }) }
 }

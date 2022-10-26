@@ -60,4 +60,4 @@ pgdata-management
 
 
 # Automatically generated docker-compose.yml file
-docker-compose.yml
+/docker-compose.yml

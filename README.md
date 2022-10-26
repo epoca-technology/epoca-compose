@@ -11,13 +11,13 @@ Epoca Compose is a CLI designed to perform sensitive operations and can run with
 
 ## Requirements
 
-- Docker: 20.10.12
+- Docker: 20.10.20
 
 - Docker Compose: v1.29.2
 
-- NodeJS: v16.13.1
+- NodeJS: v16.14.0
 
-- NPM: v8.1.2
+- NPM: v8.3.1
 
 - Install dependencies with `npm install` 
 
@@ -40,15 +40,18 @@ The `docker-compose.yml` is generated from the `./docker-compose` directory base
 ```
 compose
     │
-    docker-compose
+    docker-compose/
+    │    ├───development/
+    │    │       ├───debug-mode/
+    │    │       ├───default-mode/
+    │    │       ├───restore-mode/
+    │    │       └───test-mode/
+    │    └───production/
+    │            ├───debug-mode/
+    │            ├───default-mode/
+    │            └───restore-mode/
     │
-    └───default-mode
-    │
-    └───debug-mode
-    │
-    └───test-mode
-    │
-    └───restore-mode
+    docker-compose.yml <- Automatically generated
 ```
 
 
@@ -59,7 +62,7 @@ compose
 
 Start Containers:
 
-`npm run up`
+`npm run up` | `npm run up-prod`
 
 Stop Containers:
 
@@ -71,19 +74,19 @@ Restarts all the running containers without rebuilding the images:
 
 Build & Start Containers:
 
-`npm run build`
+`npm run build` | `npm run build-prod`
+
+Build & Start Containers in Debug Mode:
+
+`npm run debug-mode` | `npm run debug-mode-prod`
+
+Build & Start Containers in Restore Mode:
+
+`npm run restore-mode` | `npm run restore-mode-prod`
 
 Build & Start Containers in Test Mode:
 
 `npm run test-mode`
-
-Build & Start Containers in Debug Mode:
-
-`npm run debug-mode`
-
-Build & Start Containers in Restore Mode:
-
-`npm run restore-mode`
 
 Removes the dangling containers and images:
 
@@ -204,8 +207,6 @@ In order to be able to execute these tests, you must initialize the containers w
 **Notification:** `npm run test-core-notification`
 
 **Server:** `npm run test-core-server`
-
-**Trading Simulation:** `npm run test-core-trading-simulation`
 
 **Utilities:** `npm run test-core-utils`
 

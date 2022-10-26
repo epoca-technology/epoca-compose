@@ -1,0 +1,55 @@
+version: "3.9"
+services:
+  # Postgres Service
+  postgres:
+    container_name: postgres
+    image: postgres:14-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes: 
+      - pgdata:/var/lib/postgresql/data
+      - pgdata-management:/var/lib/pgdata-management
+    ports:
+      - "5432:5432"
+    logging:
+      driver: local
+      options:
+        max-size: 10m
+        max-file: "10"
+  # Core API Service
+  api:
+    extends:
+      file: ../api-${NODE_ENV}/docker-compose.yml
+      service: api
+    depends_on:
+      - postgres
+    environment:
+      NODE_ENV: ${NODE_ENV}
+      debugMode: "false"
+      testMode: "false"
+      restoreMode: "true"
+      POSTGRES_HOST: ${POSTGRES_HOST}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      FLASK_SECRET_KEY: ${FLASK_SECRET_KEY}
+      telegraf: ${telegraf}
+      recaptchaSecret: ${recaptchaSecret}
+      god: ${god}
+      firebase: ${firebase}
+      PORT: 5075
+    ports:
+      - "5075:5075"
+    volumes: 
+      - pgdata-management:/var/lib/pgdata-management
+    logging:
+      driver: local
+      options:
+        max-size: 10m
+        max-file: "10"
+volumes:
+    pgdata:
+    pgdata-management:

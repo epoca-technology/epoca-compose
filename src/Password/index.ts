@@ -1,2 +1,2 @@
-export * from './Password';
-export * from './interfaces';
+export * from "./Password";
+export * from "./interfaces";

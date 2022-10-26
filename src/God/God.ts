@@ -1,7 +1,7 @@
 import { IGod, IGodSkeleton } from "./interfaces";
-import { authenticator } from 'otplib';
+import { authenticator } from "otplib";
 import { IPassword, Password } from "../Password";
-import { v4 as uuidv4, version as uuidVersion, validate as uuidValidate } from 'uuid';
+import { v4 as uuidv4, version as uuidVersion, validate as uuidValidate } from "uuid";
 
 
 export class God implements IGod {
@@ -20,7 +20,7 @@ export class God implements IGod {
 
 
     /**
-     * Given an email address, it will build the God's skeleton
+     * Given an email address, it will build the God"s skeleton
      * that will be placed in the environment file.
      * @param email 
      * @returns IGodSkeleton

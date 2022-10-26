@@ -1,23 +1,23 @@
 // Dependencies 
-import * as prompt from 'prompt';
+import * as prompt from "prompt";
 
 // Init God Class
 import {IPassword, Password} from "./Password"
 const _password: IPassword = new Password();
 
 // Init CLI
-console.log('GENERATE PASSWORD');
-console.log('@param passwordLength  // e.g: 50 | Defaults to 50');
-console.log('@param numbers         // e.g: y or n | Defaults to y');
-console.log('@param symbols         // e.g: y or n | Defaults to y');
-console.log('@param lowercase       // e.g: y or n | Defaults to y');
-console.log('@param uppercase       // e.g: y or n | Defaults to y');
-console.log(' ');
+console.log("GENERATE PASSWORD");
+console.log("@param passwordLength  // e.g: 50 | Defaults to 50");
+console.log("@param numbers         // e.g: y or n | Defaults to y");
+console.log("@param symbols         // e.g: y or n | Defaults to y");
+console.log("@param lowercase       // e.g: y or n | Defaults to y");
+console.log("@param uppercase       // e.g: y or n | Defaults to y");
+console.log(" ");
 prompt.start();
 
 
 
-prompt.get(['passwordLength', 'numbers', 'lowercase', 'uppercase', 'symbols'], (e: any, data: prompt.Properties) => {
+prompt.get(["passwordLength", "numbers", "lowercase", "uppercase", "symbols"], (e: any, data: prompt.Properties) => {
     if (e) throw e;
 
     // Generate the password based on provided params or defaults
@@ -30,13 +30,13 @@ prompt.get(['passwordLength', 'numbers', 'lowercase', 'uppercase', 'symbols'], (
     });
 
     // Output it on the console
-    console.log(' ');
-    console.log('====================================================================');
-    console.log('GENERATED PASSWORD');
+    console.log(" ");
+    console.log("====================================================================");
+    console.log("GENERATED PASSWORD");
     console.log(`Date: ${new Date().toDateString()}`);
     console.log(`Password: ${password}`);
-    console.log('====================================================================');
-    console.log(' ');
+    console.log("====================================================================");
+    console.log(" ");
 });
 
 
@@ -74,6 +74,6 @@ function getNumberValue(configParam: string): number {
  */
 function getBooleanValue(configParam: string): boolean {
     if (typeof configParam == "string" && configParam.length) {
-        return configParam == 'y';
+        return configParam == "y";
     } else { return true }
 }

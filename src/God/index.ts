@@ -1,2 +1,2 @@
-export * from './God';
-export * from './interfaces';
+export * from "./God";
+export * from "./interfaces";

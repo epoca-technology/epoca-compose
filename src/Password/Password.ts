@@ -1,5 +1,5 @@
 import { IPassword } from "./interfaces";
-import {generate, GenerateOptions} from 'generate-password';
+import {generate, GenerateOptions} from "generate-password";
 
 
 export class Password implements IPassword {
@@ -22,7 +22,7 @@ export class Password implements IPassword {
      * @returns string
      */
     public generatePassword(options?: GenerateOptions): string {
-        // Init options in case they weren't provided
+        // Init options in case they weren"t provided
         options = options ? options: {};
 
         // Generate the password
@@ -97,7 +97,7 @@ export class Password implements IPassword {
             return  numUpper > 0 && 
                     numLower > 0 && 
                     numNums > 0 && 
-                    !password.includes('=') &&
+                    !password.includes("=") &&
                     !password.includes('"') &&
                     !password.includes("'");
         } else { return false }

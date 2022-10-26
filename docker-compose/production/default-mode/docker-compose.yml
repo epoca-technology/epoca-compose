@@ -1,0 +1,166 @@
+version: "3.9"
+services:
+  # CloudFlare Tunnel
+  cloudflared: 
+    container_name: cloudflare-tunnel 
+    image: cloudflare/cloudflared 
+    restart: unless-stopped 
+    command: tunnel run 
+    depends_on:
+      - postgres
+      - pgadmin
+      - dozzle
+      - api
+      - prediction-api
+      - gui
+    environment: 
+      - TUNNEL_TOKEN=${TUNNEL_TOKEN}
+  # Postgres Service
+  postgres:
+    container_name: postgres
+    image: postgres:14-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes: 
+      - pgdata:/var/lib/postgresql/data
+      - pgdata-management:/var/lib/pgdata-management
+    ports:
+      - "5432:5432"
+    logging:
+      driver: local
+      options:
+        max-size: 10m
+        max-file: "10"
+  # PG Admin Service
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4:6.12
+    restart: always
+    depends_on:
+      - postgres
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+      PGADMIN_LISTEN_PORT: 80
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    ports:
+      - "8080:80"
+    logging:
+      driver: local
+      options:
+        max-size: 10m
+        max-file: "10"
+  # Core API Service
+  api:
+    extends:
+      file: ../api-${NODE_ENV}/docker-compose.yml
+      service: api
+    depends_on:
+      - postgres
+    environment:
+      NODE_ENV: ${NODE_ENV}
+      debugMode: "false"
+      testMode: "false"
+      restoreMode: "false"
+      POSTGRES_HOST: ${POSTGRES_HOST}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      FLASK_SECRET_KEY: ${FLASK_SECRET_KEY}
+      telegraf: ${telegraf}
+      recaptchaSecret: ${recaptchaSecret}
+      god: ${god}
+      firebase: ${firebase}
+      PORT: 5075
+    ports:
+      - "5075:5075"
+    volumes: 
+      - pgdata-management:/var/lib/pgdata-management
+      - candlestick-files-management:/var/lib/candlestick-files-management
+      - epoch:/var/lib/epoch
+    logging:
+      driver: local
+      options:
+        max-size: 10m
+        max-file: "10"
+  # Prediction API Service
+  prediction-api:
+    extends:
+      file: ../prediction-api-${NODE_ENV}/docker-compose.yml
+      service: prediction-api
+    depends_on:
+      - postgres
+      - api
+    environment:
+      NODE_ENV: ${NODE_ENV}
+      FLASK_ENV: ${NODE_ENV}
+      FLASK_APP: "dist/index.py"
+      FLASK_RUN_HOST: "0.0.0.0"
+      FLASK_DEBUG: "False"
+      FLASK_SECRET_KEY: ${FLASK_SECRET_KEY}
+      PYTHONPATH: "/usr/src/app/dist"
+      debugMode: "false"
+      testMode: "false"
+      restoreMode: "false"
+      POSTGRES_HOST: ${POSTGRES_HOST}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      PORT: 5000
+    ports:
+      - "5000:5000"
+    volumes: 
+      - epoch:/var/lib/epoch
+    logging:
+      driver: local
+      options:
+        max-size: 10m
+        max-file: "10"
+  # Dozzle Service      
+  dozzle:
+    container_name: dozzle
+    image: amir20/dozzle:v4.0.1
+    environment:
+      DOZZLE_TAILSIZE: 300
+      DOZZLE_USERNAME: ${DOZZLE_USERNAME}
+      DOZZLE_PASSWORD: ${DOZZLE_PASSWORD}
+      DOZZLE_KEY: ${DOZZLE_KEY}
+      DOZZLE_NO_ANALYTICS: "true"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 8085:8080
+    logging:
+      driver: local
+      options:
+        max-size: 10m
+        max-file: "10"
+  # GUI Service
+  gui:
+    extends:
+      file: ../gui-${NODE_ENV}/docker-compose.yml
+      service: gui
+    build: 
+      args:
+        NODE_ENV: ${NODE_ENV}
+    depends_on:
+      - postgres
+      - api
+      - prediction-api
+    ports:
+      - "8090:80"
+    logging:
+      driver: local
+      options:
+        max-size: 10m
+        max-file: "10"
+volumes:
+    pgdata:
+    pgdata-management:
+    pgadmin-data:
+    candlestick-files-management:
+    epoch:
