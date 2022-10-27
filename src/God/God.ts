@@ -34,7 +34,7 @@ export class God implements IGod {
         if (!uuidValidate(uid) || uuidVersion(uid) != 4) throw new Error(`The generated uid is invalid: ${uid}`); 
 
         // Generate a secure password and validate it
-        const password: string = this._password.generatePassword();
+        const password: string = this._password.generatePassword({length: 100, symbols: false});
 
         // Generate an OTP Secret and validate it
         const secret: string = this.generateOTPSecret();

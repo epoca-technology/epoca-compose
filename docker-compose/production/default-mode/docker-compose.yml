@@ -5,14 +5,7 @@ services:
     container_name: cloudflare-tunnel 
     image: cloudflare/cloudflared 
     restart: unless-stopped 
-    command: tunnel run 
-    depends_on:
-      - postgres
-      - pgadmin
-      - dozzle
-      - api
-      - prediction-api
-      - gui
+    command: tunnel run
     environment: 
       - TUNNEL_TOKEN=${TUNNEL_TOKEN}
   # Postgres Service
