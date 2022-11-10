@@ -90,6 +90,8 @@ Build & Start Containers in Test Mode:
 
 Removes the dangling containers and images:
 
+**IMPORTANT:** This functionality must be used only when the containers are running. As a precaution, backup the database before performing this action.
+
 `npm run prune`
 
 
