@@ -15,7 +15,7 @@
         "restore-mode-prod": "node ./node_modules/gulp/bin/gulp.js restoreModeDCFProd && docker compose up --build -d",
         "test-mode": "node ./node_modules/gulp/bin/gulp.js testModeDCF && docker compose up --build -d",
         "restart": "docker compose restart",
-        "prune": "docker container prune && docker image prune",
+        "prune": "docker system prune -a",
         "database-backup": "node ./node_modules/gulp/bin/gulp.js buildCLI && node ./dist/databaseBackup.js",
         "database-restore": "node ./node_modules/gulp/bin/gulp.js buildCLI && node ./dist/databaseRestore.js",
         "generate-password": "node ./node_modules/gulp/bin/gulp.js buildCLI && node ./dist/generatePassword.js",
