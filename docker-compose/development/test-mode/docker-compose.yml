@@ -39,6 +39,7 @@ services:
       telegraf: ${telegraf}
       recaptchaSecret: ${recaptchaSecret}
       god: ${god}
+      binance: ${binance}
       firebase: ${firebase}
       PORT: 5075
     ports:
