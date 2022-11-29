@@ -7,6 +7,9 @@
                     ".read": "auth != null && auth.uid == $uid && auth.token.authority >= 1"
                 }
             }
+        },
+        "appBulk": {
+            ".read": "auth != null && auth.token.authority >= 1"
         }
     }
 }
