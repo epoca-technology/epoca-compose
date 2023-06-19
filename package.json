@@ -1,7 +1,7 @@
 {
     "name": "compose",
-    "version": "1.0.0",
-    "description": "Epoca is an automated trading system based on machine learning, designed to operate on Bitcoin perpetual future contracts.",
+    "version": "1.7.0",
+    "description": "Epoca is an automated trading system designed to operate in the Bitcoin Futures Market.",
     "main": "index.js",
     "scripts": {
         "up": "node ./node_modules/gulp/bin/gulp.js defaultModeDCF && docker compose up -d",
@@ -21,7 +21,6 @@
         "generate-password": "node ./node_modules/gulp/bin/gulp.js buildCLI && node ./dist/generatePassword.js",
         "generate-god-skeleton": "node ./node_modules/gulp/bin/gulp.js buildCLI && node ./dist/generateGodSkeleton.js",
         "generate-environment": "node ./node_modules/gulp/bin/gulp.js buildCLI && node ./dist/generateEnvironment.js",
-        "test": "npm run test-core && npm run test-prediction",
         "test-core": "docker exec api npm run test",
         "test-core-api-error": "docker exec api npm run test-api-error",
         "test-core-auth": "docker exec api npm run test-auth",
@@ -31,11 +30,7 @@
         "test-core-ip-blacklist": "docker exec api npm run test-ip-blacklist",
         "test-core-notification": "docker exec api npm run test-notification",
         "test-core-server": "docker exec api npm run test-server",
-        "test-core-utils": "docker exec api npm run test-utils",
-        "test-prediction": "docker exec prediction-api python -m unittest discover -s tests -p '*_test.py'",
-        "test-prediction-api-error": "docker exec prediction-api python -m unittest discover -s tests -p 'api_error_test.py'",
-        "test-prediction-candlestick": "docker exec prediction-api python -m unittest discover -s tests -p 'candlestick_test.py'",
-        "test-prediction-utils": "docker exec prediction-api python -m unittest discover -s tests -p 'utilities_test.py'"
+        "test-core-utils": "docker exec api npm run test-utils"
     },
     "repository": {
         "type": "git",

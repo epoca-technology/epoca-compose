@@ -186,10 +186,6 @@ compose
 
 In order to be able to execute these tests, you must initialize the containers with `npm run test-mode`.
 
-## End-to-end Tests
-
-`npm run test`
-
 ## Core API
 
 **End-to-end:** `npm run test-core`
@@ -211,14 +207,3 @@ In order to be able to execute these tests, you must initialize the containers w
 **Server:** `npm run test-core-server`
 
 **Utilities:** `npm run test-core-utils`
-
-
-## Prediction API
-
-**End-to-end:** `npm run test-prediction`
-
-**Api Error:** `npm run test-prediction-api-error`
-
-**Candlestick:** `npm run test-prediction-candlestick`
-
-**Utilities:** `npm run test-prediction-utils`

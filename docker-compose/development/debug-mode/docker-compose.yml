@@ -55,7 +55,6 @@ services:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: ${POSTGRES_DB}
-      FLASK_SECRET_KEY: ${FLASK_SECRET_KEY}
       telegraf: ${telegraf}
       recaptchaSecret: ${recaptchaSecret}
       god: ${god}
@@ -67,40 +66,6 @@ services:
     volumes: 
       - pgdata-management:/var/lib/pgdata-management
       - candlestick-files-management:/var/lib/candlestick-files-management
-      - epoch:/var/lib/epoch
-    logging:
-      driver: local
-      options:
-        max-size: 10m
-        max-file: "10"
-  # Prediction API Service
-  prediction-api:
-    extends:
-      file: ../prediction-api-${NODE_ENV}/docker-compose.yml
-      service: prediction-api
-    depends_on:
-      - postgres
-      - api
-    environment:
-      NODE_ENV: ${NODE_ENV}
-      FLASK_ENV: ${NODE_ENV}
-      FLASK_APP: "dist/index.py"
-      FLASK_RUN_HOST: "0.0.0.0"
-      FLASK_DEBUG: "False"
-      FLASK_SECRET_KEY: ${FLASK_SECRET_KEY}
-      PYTHONPATH: "/usr/src/app/dist"
-      debugMode: "true"
-      testMode: "false"
-      restoreMode: "false"
-      POSTGRES_HOST: ${POSTGRES_HOST}
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_DB: ${POSTGRES_DB}
-      PORT: 5000
-    ports:
-      - "5000:5000"
-    volumes: 
-      - epoch:/var/lib/epoch
     logging:
       driver: local
       options:
@@ -136,7 +101,6 @@ services:
     depends_on:
       - postgres
       - api
-      - prediction-api
     ports:
       - "8090:80"
     logging:
@@ -149,4 +113,3 @@ volumes:
     pgdata-management:
     pgadmin-data:
     candlestick-files-management:
-    epoch:
