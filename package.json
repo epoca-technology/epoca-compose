@@ -32,11 +32,12 @@
         "test-core-server": "docker exec api npm run test-server",
         "test-core-utils": "docker exec api npm run test-utils"
     },
+    "private": true,
     "repository": {
         "type": "git",
         "url": "git+ssh://git@bitbucket.org/projectplutus/compose.git"
     },
-    "author": "Plutus",
+    "author": "Jesus Graterol",
     "license": "ISC",
     "homepage": "https://bitbucket.org/projectplutus/compose#readme",
     "dependencies": {
