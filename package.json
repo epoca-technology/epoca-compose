@@ -9,8 +9,6 @@
         "down": "docker compose down",
         "build": "node ./node_modules/gulp/bin/gulp.js defaultModeDCF && docker compose up --build -d",
         "build-prod": "node ./node_modules/gulp/bin/gulp.js defaultModeDCFProd && docker compose up --build -d",
-        "debug-mode": "node ./node_modules/gulp/bin/gulp.js debugModeDCF && docker compose up --build -d",
-        "debug-mode-prod": "node ./node_modules/gulp/bin/gulp.js debugModeDCFProd && docker compose up --build -d",
         "restore-mode": "node ./node_modules/gulp/bin/gulp.js restoreModeDCF && docker compose up --build -d",
         "restore-mode-prod": "node ./node_modules/gulp/bin/gulp.js restoreModeDCFProd && docker compose up --build -d",
         "test-mode": "node ./node_modules/gulp/bin/gulp.js testModeDCF && docker compose up --build -d",

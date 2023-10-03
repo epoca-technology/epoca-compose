@@ -42,12 +42,10 @@ compose
     │
     docker-compose/
     │    ├───development/
-    │    │       ├───debug-mode/
     │    │       ├───default-mode/
     │    │       ├───restore-mode/
     │    │       └───test-mode/
     │    └───production/
-    │            ├───debug-mode/
     │            ├───default-mode/
     │            └───restore-mode/
     │
@@ -75,10 +73,6 @@ Restarts all the running containers without rebuilding the images:
 Build & Start Containers:
 
 `npm run build` | `npm run build-prod`
-
-Build & Start Containers in Debug Mode:
-
-`npm run debug-mode` | `npm run debug-mode-prod`
 
 Build & Start Containers in Restore Mode:
 

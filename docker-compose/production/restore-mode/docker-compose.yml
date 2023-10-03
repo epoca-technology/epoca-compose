@@ -28,7 +28,6 @@ services:
       - postgres
     environment:
       NODE_ENV: ${NODE_ENV}
-      debugMode: "false"
       testMode: "false"
       restoreMode: "true"
       POSTGRES_HOST: ${POSTGRES_HOST}
