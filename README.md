@@ -1,6 +1,6 @@
 # EPOCA COMPOSE
 
-Epoca Compose is a CLI designed to perform sensitive operations and can run without an active Internet connection. It also takes care of managing the project's containers by making use of Docker Compose.
+Epoca Compose is a CLI designed to perform sensitive operations and can run without an active Internet connection, takes care of managing the project's containers by making use of Docker Compose and interacts directly with the server through SSH.
 
 
 ## Docs
