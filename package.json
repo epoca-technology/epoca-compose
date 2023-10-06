@@ -1,5 +1,5 @@
 {
-    "name": "compose",
+    "name": "epoca-compose",
     "version": "2.0.0",
     "description": "Epoca Compose is a CLI designed to perform sensitive operations and can run without an active Internet connection, takes care of managing the project's containers by making use of Docker Compose and interacts directly with the server through SSH.",
     "main": "index.js",
@@ -33,11 +33,11 @@
     "private": true,
     "repository": {
         "type": "git",
-        "url": "git+ssh://git@bitbucket.org/projectplutus/compose.git"
+        "url": "git@github.com:epoca-technology/epoca-compose.git"
     },
     "author": "Jesus Graterol",
     "license": "ISC",
-    "homepage": "https://bitbucket.org/projectplutus/compose#readme",
+    "homepage": "https://github.com/epoca-technology/epoca-compose",
     "dependencies": {
         "@getvim/execute": "1.0.0",
         "generate-password": "1.7.0",
